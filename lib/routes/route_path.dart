@@ -1,0 +1,9 @@
+final String home = '/';
+final String onboardingOne = "/onboarding";
+final String signUp = "/signup";
+final String signIn = "/signin";
+final String profile = "/profile";
+final String settings = '/settings';
+final String dashboard = '/dashboard';
+final String statistics = '/statistics';
+final String debitCards = '/cards';
