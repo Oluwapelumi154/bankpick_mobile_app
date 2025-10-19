@@ -10,12 +10,14 @@ class LanguageOption extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    bool isDarkMode = Theme.of(context).brightness == Brightness.dark;
+
     return Container(
       margin: EdgeInsets.only(top: 15),
       child: Column(
         children: [
           SizedBox(
-            height: 70,
+            height: 65,
             child: Row(
               children: [
                 Image.asset(
@@ -29,10 +31,9 @@ class LanguageOption extends StatelessWidget {
                 Expanded(
                     child: Text(
                   label,
-                  style: Theme.of(context)
-                      .textTheme
-                      .displayMedium
-                      ?.copyWith(color: AppColors.white, fontSize: 18),
+                  style: Theme.of(context).textTheme.displayMedium?.copyWith(
+                      color: isDarkMode ? AppColors.white : AppColors.black,
+                      fontSize: 18),
                 )),
                 if (isSelected != null)
                   Container(
@@ -42,6 +43,7 @@ class LanguageOption extends StatelessWidget {
                         color: AppColors.primary, shape: BoxShape.circle),
                     child: Icon(
                       Icons.check,
+                      color: AppColors.white,
                       size: 18,
                     ),
                   )
@@ -52,7 +54,7 @@ class LanguageOption extends StatelessWidget {
             height: 3,
           ),
           Divider(
-            color: AppColors.grey,
+            color: isDarkMode ? AppColors.grey : AppColors.offWhite,
             height: 0.2,
           )
         ],

@@ -17,12 +17,8 @@ class EditProfile extends StatelessWidget {
               child: Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 17),
                   child: CustomAppBar(
-                      label: 'Edit Profile',
-                      icon: Icon(
-                        Icons.notifications_outlined,
-                        color: isDarkMode ? AppColors.white : AppColors.black,
-                        size: 27,
-                      ))))),
+                    label: 'Edit Profile',
+                  )))),
       body: SafeArea(
           child: Container(
         margin: EdgeInsets.only(top: 30),

@@ -19,7 +19,7 @@ class Profile extends StatelessWidget {
             child: CustomAppBar(
                 label: 'Profile',
                 icon: Icon(
-                  Icons.notifications_outlined,
+                  Icons.edit,
                   color: isDarkMode ? AppColors.white : AppColors.black,
                   size: 27,
                 )),

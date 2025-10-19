@@ -40,6 +40,8 @@ class Transfer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    bool isDarkMode = Theme.of(context).brightness == Brightness.dark;
+
     return Scaffold(
       appBar: PreferredSize(
           preferredSize: Size.fromHeight(80),
@@ -65,7 +67,7 @@ class Transfer extends StatelessWidget {
               SizedBox(
                 height: 180,
                 child: Card(
-                  color: AppColors.black,
+                  color: isDarkMode ? AppColors.black : AppColors.offWhite,
                   shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(20)),
                   child: Padding(
@@ -103,7 +105,9 @@ class Transfer extends StatelessWidget {
                                         height: 60,
                                         width: 60,
                                         decoration: BoxDecoration(
-                                            color: AppColors.black,
+                                            color: isDarkMode
+                                                ? AppColors.black
+                                                : AppColors.offWhite,
                                             border: Border.all(
                                                 color: AppColors.primary,
                                                 width: 1),
@@ -117,12 +121,17 @@ class Transfer extends StatelessWidget {
                                     if (index != 0)
                                       CircleAvatar(
                                         radius: 30,
-                                        backgroundColor: AppColors.white,
+                                        backgroundColor: isDarkMode
+                                            ? AppColors.white
+                                            : AppColors.black,
                                       ),
                                     SizedBox(height: 2),
                                     Text(
                                       data['name']!,
                                       style: TextStyle(
+                                          color: isDarkMode
+                                              ? AppColors.grey
+                                              : AppColors.black,
                                           overflow: TextOverflow.ellipsis),
                                     ),
                                   ],
@@ -145,7 +154,7 @@ class Transfer extends StatelessWidget {
               SizedBox(
                 height: 130,
                 child: Card(
-                  color: AppColors.black,
+                  color: isDarkMode ? AppColors.black : AppColors.offWhite,
                   shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(20)),
                   child: Padding(

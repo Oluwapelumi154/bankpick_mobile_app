@@ -113,9 +113,13 @@ class Settings extends StatelessWidget {
                       ),
                       Switch(
                           value: true,
-                          activeColor: AppColors.white,
-                          inactiveThumbColor: AppColors.grey,
-                          inactiveTrackColor: Colors.grey.shade300,
+                          activeColor:
+                              isDarkMode ? AppColors.white : AppColors.black,
+                          inactiveThumbColor:
+                              isDarkMode ? AppColors.grey : AppColors.white,
+                          inactiveTrackColor: isDarkMode
+                              ? Colors.grey.shade300
+                              : AppColors.white,
                           onChanged: (bool value) {
                             print(value);
                           })

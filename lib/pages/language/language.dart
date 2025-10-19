@@ -8,6 +8,8 @@ class Language extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    bool isDarkMode = Theme.of(context).brightness == Brightness.dark;
+
     return Scaffold(
         appBar: PreferredSize(
             preferredSize: Size.fromHeight(80),
@@ -30,17 +32,25 @@ class Language extends StatelessWidget {
                   decoration: InputDecoration(
                       contentPadding: EdgeInsets.symmetric(vertical: 0),
                       border: OutlineInputBorder(
-                          borderSide: BorderSide(color: AppColors.offWhite),
+                          borderSide:
+                              BorderSide(color: AppColors.offWhite, width: 0.5),
                           borderRadius: BorderRadius.circular(13)),
-                      fillColor: AppColors.bottomNavbarBackground,
-                      prefixIcon: Icon(Icons.search, color: AppColors.offWhite),
+                      fillColor: isDarkMode
+                          ? AppColors.bottomNavbarBackground
+                          : AppColors.offWhite,
+                      prefixIcon: Icon(Icons.search,
+                          color: isDarkMode
+                              ? AppColors.offWhite
+                              : AppColors.black),
                       filled: true,
                       hintText: "Search Language",
                       hintStyle: Theme.of(context)
                           .textTheme
                           .displayMedium
                           ?.copyWith(
-                              color: AppColors.offWhite,
+                              color: isDarkMode
+                                  ? AppColors.offWhite
+                                  : AppColors.black,
                               fontSize: 16,
                               fontWeight: FontWeight.w500)),
                 ),

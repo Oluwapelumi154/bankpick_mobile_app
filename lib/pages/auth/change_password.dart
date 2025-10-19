@@ -41,10 +41,10 @@ class ChangePassword extends StatelessWidget {
                     onPressed: () {},
                     child: Text(
                       "Change Password",
-                      style: Theme.of(context)
-                          .textTheme
-                          .displayLarge
-                          ?.copyWith(fontSize: 16, fontWeight: FontWeight.w600),
+                      style: Theme.of(context).textTheme.displayLarge?.copyWith(
+                          fontSize: 16,
+                          color: AppColors.white,
+                          fontWeight: FontWeight.w600),
                     )))
           ],
         ),
