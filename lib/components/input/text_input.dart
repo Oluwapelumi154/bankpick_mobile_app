@@ -36,7 +36,10 @@ class _TextInputState extends State<TextInput> {
                     minWidth: 0,
                     minHeight: 0,
                   ),
-                  contentPadding: EdgeInsets.only(left: 50, right: 50),
+                  contentPadding:
+                      const EdgeInsets.symmetric(horizontal: 12, vertical: 12),
+
+                  // contentPadding: EdgeInsets.only(left: 50, right: 50),
                   prefixIconColor: AppColors.grey,
                   hintStyle: TextStyle(color: AppColors.white),
                   focusedBorder: UnderlineInputBorder(

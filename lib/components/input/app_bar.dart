@@ -4,12 +4,13 @@ import "package:go_router/go_router.dart";
 
 class CustomAppBar extends StatelessWidget {
   final String label;
-  final Widget icon;
-  const CustomAppBar({super.key, required this.label, required this.icon});
+  final Widget? icon;
+  const CustomAppBar({super.key, required this.label, this.icon});
 
   @override
   Widget build(BuildContext context) {
     bool isDarkMode = Theme.of(context).brightness == Brightness.dark;
+    final String location = GoRouterState.of(context).uri.toString();
 
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -33,13 +34,22 @@ class CustomAppBar extends StatelessWidget {
                 .textTheme
                 .displayMedium
                 ?.copyWith(fontSize: 20, fontWeight: FontWeight.w600)),
-        IconButton(
-            onPressed: () {},
-            style: IconButton.styleFrom(
-                backgroundColor:
-                    isDarkMode ? AppColors.black : AppColors.offWhite,
-                fixedSize: Size(50, 50)),
-            icon: icon)
+        if (icon != null)
+          IconButton(
+              onPressed: () {
+                if (location.startsWith("/profile")) {
+                  context.go('/edit_profile');
+                } else if (location.startsWith("/cards")) {
+                  context.go('/add_card');
+                }
+              },
+              style: IconButton.styleFrom(
+                  backgroundColor:
+                      isDarkMode ? AppColors.black : AppColors.offWhite,
+                  fixedSize: Size(50, 50)),
+              icon: icon!)
+        else
+          const SizedBox(width: 50),
       ],
     );
   }

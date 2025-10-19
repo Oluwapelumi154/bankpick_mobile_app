@@ -62,4 +62,10 @@ final List<Map<String, String>> transactionHistory = [
   {"name": "Money Transfer", "category": "Transportation"},
   {"name": "Grocery", "category": "Grocery"},
   {"name": "Data", "category": "Yes"},
+  {"name": "Data", "category": "Yes"},
+  {"name": "Data", "category": "Yes"},
+  {"name": "Data", "category": "Yes"},
+  {"name": "Data", "category": "Yes"},
+  {"name": "Data", "category": "Yes"},
+  {"name": "Data", "category": "Yes"},
 ];

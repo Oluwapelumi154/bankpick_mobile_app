@@ -2,6 +2,7 @@ import 'package:bankpick_mobile_app/components/input/debit_card.dart';
 import 'package:bankpick_mobile_app/themes/app_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:bankpick_mobile_app/utlis/onboarding.data.dart';
+import "package:go_router/go_router.dart";
 
 class Dashboard extends StatelessWidget {
   const Dashboard({super.key});
@@ -108,7 +109,11 @@ class Dashboard extends StatelessWidget {
                         backgroundColor:
                             isDarkMode ? AppColors.black : AppColors.offWhite,
                       ),
-                      onPressed: () {},
+                      onPressed: () {
+                        if (data['label'] == "Sent") {
+                          context.go('/transfer');
+                        }
+                      },
                       icon: data['icon'],
                     ),
                     const SizedBox(height: 6),
@@ -138,11 +143,14 @@ class Dashboard extends StatelessWidget {
                     .displayMedium
                     ?.copyWith(fontSize: 20, fontWeight: FontWeight.w600),
               ),
-              Text('Sell All',
-                  style: Theme.of(context).textTheme.displaySmall?.copyWith(
-                      color: AppColors.primary,
-                      fontSize: 16.5,
-                      fontWeight: FontWeight.w500))
+              InkWell(
+                onTap: () => context.push('/transaction_history'),
+                child: Text('See All',
+                    style: Theme.of(context).textTheme.displaySmall?.copyWith(
+                        color: AppColors.primary,
+                        fontSize: 16.5,
+                        fontWeight: FontWeight.w500)),
+              )
             ],
           ),
           SizedBox(height: 20),

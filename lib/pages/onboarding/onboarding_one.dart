@@ -96,12 +96,18 @@ class _OnboardingOneState extends State<OnboardingOne> {
               SizedBox(height: 35),
               Text(pages[pageIndex]['title'],
                   textAlign: TextAlign.center,
-                  style: Theme.of(context).textTheme.displayLarge),
+                  style: Theme.of(context)
+                      .textTheme
+                      .displayLarge
+                      ?.copyWith(fontWeight: FontWeight.w600)),
               SizedBox(height: 18),
               Text(
                 pages[pageIndex]['subtitle'],
                 textAlign: TextAlign.center,
-                style: Theme.of(context).textTheme.bodyMedium,
+                style: Theme.of(context)
+                    .textTheme
+                    .bodyMedium
+                    ?.copyWith(fontWeight: FontWeight.w600),
               ),
               Spacer(),
               SizedBox(

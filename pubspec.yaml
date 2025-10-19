@@ -53,8 +53,13 @@ dev_dependencies:
   flutter_lints: ^5.0.0
 
 flutter_native_splash:
- color: "#1E1E1E"
- image: assets/images/bank_pick_logo.png
+ color: "#ffffff"
+ image: assets/images/light-logo.png
+ color_dark: "#161622"
+ image_dark: assets/images/bank_pick_logo.png
+ ios_content_mode: center
+
+ 
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
@@ -75,6 +80,7 @@ flutter:
     - assets/images/world_map.png
     - assets/images/ellipse-one.png
     - assets/images/mc_dark_logo.png
+    - assets/images/bank_pick_logo.png
     - assets/icons/home_default.png
     - assets/icons/home_active.png
     - assets/icons/card_default.png
@@ -86,6 +92,12 @@ flutter:
     - assets/images/vertical.png
     - assets/images/chips.png
     - assets/images/graph-light.png
+    - assets/images/light-logo.png
+    - assets/images/country-flags/america.png
+    - assets/images/country-flags/france.png
+    - assets/images/country-flags/spanish.png 
+    - assets/images/country-flags/uk.png
+    - assets/images/country-flags/vietam.png
 
 
 

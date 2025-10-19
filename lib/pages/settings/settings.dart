@@ -54,7 +54,7 @@ class Settings extends StatelessWidget {
                       title: 'Language',
                       label: 'English',
                       onPressed: () {
-                        print('Clicked');
+                        context.go("/language");
                       }),
                   SettingList(
                       title: 'My Profile',
@@ -84,13 +84,13 @@ class Settings extends StatelessWidget {
                       title: 'Change Password',
                       label: '',
                       onPressed: () {
-                        print('Clicked');
+                        context.go('/change_password');
                       }),
                   SettingList(
                       title: 'Privacy Policy',
                       label: '',
                       onPressed: () {
-                        print('Clicked');
+                        context.go('/terms_condition');
                       }),
                   SizedBox(
                     height: 18,
