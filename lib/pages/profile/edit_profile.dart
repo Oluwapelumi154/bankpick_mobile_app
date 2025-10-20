@@ -3,8 +3,21 @@ import 'package:bankpick_mobile_app/components/input/text_input.dart';
 import 'package:bankpick_mobile_app/themes/app_colors.dart';
 import 'package:flutter/material.dart';
 
-class EditProfile extends StatelessWidget {
+class EditProfile extends StatefulWidget {
   const EditProfile({super.key});
+
+  @override
+  State<EditProfile> createState() => _EditProfileState();
+}
+
+class _EditProfileState extends State<EditProfile> {
+  final TextEditingController fullName = TextEditingController(text: "");
+  final TextEditingController emailAddress = TextEditingController(text: "");
+  final TextEditingController phoneNumber = TextEditingController(text: "");
+  final TextEditingController birthDate = TextEditingController(text: "");
+  final TextEditingController month = TextEditingController(text: "");
+  final TextEditingController day = TextEditingController(text: "");
+  final TextEditingController week = TextEditingController(text: "");
 
   @override
   Widget build(BuildContext context) {
@@ -50,15 +63,24 @@ class EditProfile extends StatelessWidget {
                 ],
               ),
             ),
-            TextInput(label: "Full Name", icon: Icon(Icons.person)),
+            TextInput(
+                label: "Full Name",
+                controller: fullName,
+                icon: Icon(Icons.person)),
             SizedBox(
               height: 20,
             ),
-            TextInput(label: "Email address", icon: Icon(Icons.email_outlined)),
+            TextInput(
+                label: "Email address",
+                controller: emailAddress,
+                icon: Icon(Icons.email_outlined)),
             SizedBox(
               height: 20,
             ),
-            TextInput(label: "Phone Number", icon: Icon(Icons.call_outlined)),
+            TextInput(
+                label: "Phone Number",
+                controller: phoneNumber,
+                icon: Icon(Icons.call_outlined)),
             SizedBox(height: 20),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -66,6 +88,7 @@ class EditProfile extends StatelessWidget {
                 Expanded(
                   child: TextInput(
                       label: "Birth Date",
+                      controller: birthDate,
                       icon: Icon(Icons.calendar_view_day_outlined)),
                 ),
                 SizedBox(
@@ -74,14 +97,18 @@ class EditProfile extends StatelessWidget {
                 SizedBox(
                   width: 140,
                   child: TextInput(
-                      label: "", icon: Icon(Icons.calendar_month_outlined)),
+                      controller: month,
+                      label: "",
+                      icon: Icon(Icons.calendar_month_outlined)),
                 ),
                 SizedBox(
                   width: 16,
                 ),
                 Expanded(
                   child: TextInput(
-                      label: "", icon: Icon(Icons.calendar_view_week_rounded)),
+                      controller: week,
+                      label: "",
+                      icon: Icon(Icons.calendar_view_week_rounded)),
                 )
               ],
             ),

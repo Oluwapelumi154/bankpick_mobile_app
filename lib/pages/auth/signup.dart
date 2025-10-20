@@ -1,6 +1,8 @@
 import 'package:bankpick_mobile_app/components/input/password_input.dart';
 import 'package:bankpick_mobile_app/components/input/text_input.dart';
 import 'package:bankpick_mobile_app/themes/app_colors.dart';
+import 'package:bankpick_mobile_app/utlis/validator.dart';
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
@@ -12,6 +14,38 @@ class SignUp extends StatefulWidget {
 }
 
 class _SignUpState extends State<SignUp> {
+  final _formKey = GlobalKey<FormState>();
+  late TextEditingController fullName;
+  late TextEditingController phoneNumber;
+  late TextEditingController email;
+  late TextEditingController password;
+
+  void onSubmit() {
+    print(fullName.text);
+    print(phoneNumber.text);
+    print(email.text);
+    print(password.text);
+    context.go('/dashboard');
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    fullName = TextEditingController();
+    phoneNumber = TextEditingController();
+    email = TextEditingController();
+    password = TextEditingController();
+  }
+
+  @override
+  void dispose() {
+    email.dispose();
+    phoneNumber.dispose();
+    fullName.dispose();
+    password.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     bool isDarkMode = Theme.of(context).brightness == Brightness.dark;
@@ -56,35 +90,65 @@ class _SignUpState extends State<SignUp> {
                 'Sign Up',
                 style: Theme.of(context).textTheme.displayMedium,
               ),
-              SizedBox(height: 40),
-              TextInput(label: "Full Name", icon: Icon(Icons.email_outlined)),
               SizedBox(height: 30),
-              TextInput(label: "Phone Number", icon: Icon(Icons.call_outlined)),
-              SizedBox(
-                height: 30,
-              ),
-              TextInput(
-                  label: "Email Address", icon: Icon(Icons.email_outlined)),
-              SizedBox(
-                height: 30,
-              ),
-              PasswordInput(
-                label: "Password",
-              ),
-              SizedBox(
-                height: 45,
-              ),
-              SizedBox(
-                  height: 52,
-                  child: FilledButton(
-                      style: FilledButton.styleFrom(
-                          shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(14))),
-                      onPressed: () {
-                        context.push('/dashboard');
-                      },
-                      child: Text('Sign Up',
-                          style: Theme.of(context).textTheme.bodySmall))),
+              Form(
+                  key: _formKey,
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.stretch,
+                    children: [
+                      TextInput(
+                        label: "Full Name",
+                        icon: Icon(Icons.email_outlined),
+                        controller: fullName,
+                        validator: Validator.requiredField,
+                      ),
+                      SizedBox(height: 20),
+                      TextInput(
+                        label: "Phone Number",
+                        icon: Icon(Icons.call_outlined),
+                        controller: phoneNumber,
+                        validator: Validator.phoneNumber,
+                      ),
+                      SizedBox(
+                        height: 20,
+                      ),
+                      TextInput(
+                        label: "Email Address",
+                        icon: Icon(Icons.email_outlined),
+                        controller: email,
+                        validator: Validator.email,
+                      ),
+                      SizedBox(
+                        height: 20,
+                      ),
+                      PasswordInput(
+                        label: "Password",
+                        controller: password,
+                        validator: Validator.requiredField,
+                      ),
+                      SizedBox(
+                        height: 35,
+                      ),
+                      SizedBox(
+                          height: 52,
+                          child: FilledButton(
+                              style: FilledButton.styleFrom(
+                                  shape: RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(14))),
+                              onPressed: () {
+                                if (_formKey.currentState!.validate()) {
+                                  onSubmit();
+                                  print("Validated");
+                                } else {
+                                  print('Form Invalid');
+                                }
+                              },
+                              child: Text('Sign Up',
+                                  style:
+                                      Theme.of(context).textTheme.bodySmall))),
+                    ],
+                  )),
               SizedBox(
                 height: 30,
               ),
@@ -102,11 +166,15 @@ class _SignUpState extends State<SignUp> {
                         width: 5,
                       )),
                       TextSpan(
-                          text: "Sign Up",
+                          text: "Sign In",
+                          recognizer: TapGestureRecognizer()
+                            ..onTap = () {
+                              context.push('/signin');
+                            },
                           style: TextStyle(
                               color: AppColors.primary,
                               fontSize: 17,
-                              fontWeight: FontWeight.w500))
+                              fontWeight: FontWeight.w500)),
                     ])),
               )
             ],

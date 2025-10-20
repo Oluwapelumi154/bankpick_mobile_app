@@ -4,7 +4,14 @@ import 'package:flutter/material.dart';
 class TextInput extends StatefulWidget {
   final String label;
   final Widget icon;
-  const TextInput({super.key, required this.label, required this.icon});
+  final TextEditingController controller;
+  final String? Function(String?)? validator;
+  const TextInput(
+      {super.key,
+      required this.label,
+      required this.icon,
+      required this.controller,
+      this.validator});
 
   @override
   State<TextInput> createState() => _TextInputState();
@@ -23,8 +30,11 @@ class _TextInputState extends State<TextInput> {
             height: 3,
           ),
           SizedBox(
-            height: 45,
+            // height: 58,
             child: TextFormField(
+              autovalidateMode: AutovalidateMode.onUserInteraction,
+              controller: widget.controller,
+              validator: widget.validator,
               style: Theme.of(context).textTheme.bodyMedium?.copyWith(
                   color: isDarkMode ? AppColors.white : AppColors.black),
               decoration: InputDecoration(
@@ -36,8 +46,8 @@ class _TextInputState extends State<TextInput> {
                     minWidth: 0,
                     minHeight: 0,
                   ),
-                  contentPadding:
-                      const EdgeInsets.symmetric(horizontal: 12, vertical: 12),
+                  // contentPadding:
+                  //     const EdgeInsets.symmetric(horizontal: 12, vertical: 12),
 
                   // contentPadding: EdgeInsets.only(left: 50, right: 50),
                   prefixIconColor: AppColors.grey,

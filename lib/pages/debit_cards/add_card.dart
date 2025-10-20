@@ -3,8 +3,18 @@ import 'package:bankpick_mobile_app/components/input/debit_card.dart';
 import 'package:bankpick_mobile_app/components/input/text_input.dart';
 import 'package:flutter/material.dart';
 
-class AddCard extends StatelessWidget {
+class AddCard extends StatefulWidget {
   const AddCard({super.key});
+
+  @override
+  State<AddCard> createState() => _AddCardState();
+}
+
+class _AddCardState extends State<AddCard> {
+  final TextEditingController cardHolderName = TextEditingController(text: "");
+  final TextEditingController expiryDate = TextEditingController(text: "");
+  final TextEditingController cvv = TextEditingController(text: "");
+  final TextEditingController cardNumber = TextEditingController(text: "");
 
   @override
   Widget build(BuildContext context) {
@@ -27,25 +37,35 @@ class AddCard extends StatelessWidget {
             SizedBox(
               height: 35,
             ),
-            TextInput(label: "Cardholder Name", icon: Icon(Icons.person)),
+            TextInput(
+                label: "Cardholder Name",
+                controller: cardHolderName,
+                icon: Icon(Icons.person)),
             SizedBox(height: 20),
             Row(
               children: [
                 Expanded(
-                  child:
-                      TextInput(label: "Expiry Date", icon: Icon(Icons.person)),
+                  child: TextInput(
+                      label: "Expiry Date",
+                      controller: expiryDate,
+                      icon: Icon(Icons.person)),
                 ),
                 SizedBox(
                   width: 40,
                 ),
                 Expanded(
-                  child:
-                      TextInput(label: "4 Digit CVV", icon: Icon(Icons.person)),
+                  child: TextInput(
+                      label: "4 Digit CVV",
+                      controller: cvv,
+                      icon: Icon(Icons.person)),
                 ),
               ],
             ),
             SizedBox(height: 20),
-            TextInput(label: "Card Number", icon: Icon(Icons.wallet))
+            TextInput(
+                label: "Card Number",
+                controller: cardNumber,
+                icon: Icon(Icons.wallet))
           ],
         ),
       )),

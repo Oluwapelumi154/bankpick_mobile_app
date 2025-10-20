@@ -5,14 +5,21 @@ final ThemeData darkTheme = ThemeData(
     fontFamily: 'Rubik',
     scaffoldBackgroundColor: AppColors.darkBackground,
     appBarTheme: AppBarTheme(backgroundColor: AppColors.darkBackground),
+    inputDecorationTheme: InputDecorationTheme(
+        errorStyle: TextStyle(
+      color: AppColors.red,
+      fontSize: 16,
+      fontWeight: FontWeight.w500,
+      height: 1.3,
+    )),
     colorScheme: ColorScheme(
         brightness: Brightness.dark,
         primary: AppColors.primary,
         onPrimary: AppColors.white,
         secondary: AppColors.grey,
         onSecondary: AppColors.white,
-        error: AppColors.black,
-        onError: AppColors.black,
+        error: AppColors.red,
+        onError: AppColors.red,
         surface: AppColors.black,
         onSurface: AppColors.black),
     textTheme: TextTheme(
@@ -31,14 +38,21 @@ final ThemeData lightTheme = ThemeData(
     fontFamily: 'Rubik',
     scaffoldBackgroundColor: AppColors.lightBackground,
     appBarTheme: AppBarTheme(backgroundColor: AppColors.lightBackground),
+    inputDecorationTheme: InputDecorationTheme(
+        errorStyle: TextStyle(
+      color: AppColors.red,
+      fontSize: 16,
+      fontWeight: FontWeight.w500,
+      height: 1.3,
+    )),
     colorScheme: ColorScheme(
         brightness: Brightness.light,
         primary: AppColors.primary,
         onPrimary: AppColors.white,
         secondary: AppColors.grey,
         onSecondary: AppColors.white,
-        error: AppColors.black,
-        onError: AppColors.black,
+        error: AppColors.red,
+        onError: AppColors.red,
         surface: AppColors.black,
         onSurface: AppColors.white),
     textTheme: TextTheme(

@@ -3,14 +3,28 @@ import 'package:flutter/material.dart';
 
 class PasswordInput extends StatefulWidget {
   final String label;
-  const PasswordInput({super.key, required this.label});
+  final String? Function(String?)? validator;
+  final TextEditingController controller;
+
+  const PasswordInput(
+      {super.key,
+      required this.label,
+      required this.controller,
+      this.validator});
 
   @override
   State<PasswordInput> createState() => _TextInputState();
 }
 
 class _TextInputState extends State<PasswordInput> {
-  bool isPasswordVisible = false;
+  late bool isPasswordVisible;
+
+  @override
+  void initState() {
+    super.initState();
+    isPasswordVisible = false;
+  }
+
   void togglePassword() {
     setState(() {
       isPasswordVisible = !isPasswordVisible;
@@ -30,13 +44,14 @@ class _TextInputState extends State<PasswordInput> {
           height: 3,
         ),
         SizedBox(
-          height: 45,
+          // height: 45,
           child: TextFormField(
+            controller: widget.controller,
+            validator: widget.validator,
             style: Theme.of(context).textTheme.bodyMedium?.copyWith(
                 color: isDarkMode ? AppColors.white : AppColors.black),
-            obscureText: isPasswordVisible,
+            obscureText: isPasswordVisible ? false : true,
             decoration: InputDecoration(
-                contentPadding: EdgeInsets.only(left: 50, right: 50),
                 hintText: "",
                 prefixIcon: Padding(
                   padding: const EdgeInsets.only(right: 10),
@@ -54,14 +69,14 @@ class _TextInputState extends State<PasswordInput> {
                   minWidth: 0,
                   minHeight: 0,
                 ),
-                suffixIcon: GestureDetector(
+                suffixIcon: InkWell(
                     onTap: togglePassword,
                     child: Padding(
                       padding: const EdgeInsets.only(left: 8.0),
                       child: Icon(
                           isPasswordVisible
-                              ? Icons.visibility_off_outlined
-                              : Icons.visibility_outlined,
+                              ? Icons.visibility_outlined
+                              : Icons.visibility_off_outlined,
                           color: AppColors.grey),
                     )),
                 suffixIconColor: AppColors.grey,
